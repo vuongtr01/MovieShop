@@ -1,0 +1,26 @@
+@model List<MovieCastResponseModel>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Avatar</th>
+        <th scope="col">Name</th>
+        <th scope="col">Character</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var cast in Model)
+    {
+        <tr>
+            <td>
+                <a asp-action="Detail" asp-controller="Cast" asp-route-id="@cast.Id">
+                    <img src="@cast.ProfilePath" alt="Avatar" class="avatar">
+                </a>
+            </td>
+            <td>@cast.Name</td>
+            <td>@cast.Character</td>
+        </tr>
+    }
+    </tbody>
+</table>
+

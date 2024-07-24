@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Movies Page";
+}
+@model IEnumerable<MovieResponseModel>
+
+<div class="container mt-5">
+    <div class="row">
+        <partial name="_PaginationBar"/>
+    </div>
+    <div class="row g-4">
+        @foreach (var card in Model)
+        {
+            <partial name="_MovieCard" model="card"/>
+        }
+    </div>
+    <div class="row">
+        <partial name="_PaginationBar"/>
+    </div>
+</div>

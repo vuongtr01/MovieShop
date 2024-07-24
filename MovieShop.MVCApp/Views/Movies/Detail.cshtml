@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Movie Detail";
+}
+@model MovieResponseModel
+
+<div class="container p-2">
+    <div class="row g-4" style="background-color: #616160; color: white">
+        <div class="col-md-3" style="align-items: center">
+            <img src="@Model.PosterUrl" height="250px" alt="poster image"/>
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Title</h2>
+            <h6>@Model.Tagline</h6>
+            <p>@Model.RunTime m | @Model.ReleaseDate.Value.Year</p>
+            <span class="badge bg-success">8.8</span>
+            <p>@Model.Overview</p>
+        </div>
+        <div class="col-md-3" style="align-items: center; justify-content: center">
+            <div style="margin: 2px 0px">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#reviewModal">
+                    Review
+                </button>
+            </div>
+            <div style="margin: 2px 0px">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#purchaseModal">
+                    Buy $6.99
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row g-4 pt-3">
+        <div class="col-sm-3" style="background-color: #ebeae8">
+            <ul class="list-group mb-4" style="background-color: #ebeae8">
+                <li class="list-group-item">
+                    <h6>Movie Facts</h6>
+                </li>
+                <li class="list-group-item">
+                    Release Date <span class="badge rounded-pill bg-secondary">@Model.ReleaseDate</span>
+                </li>
+                <li class="list-group-item">
+                    Run Time <span class="badge rounded-pill bg-secondary">@Model.RunTime m</span>
+                </li>
+                <li class="list-group-item">
+                    Box Office <span class="badge rounded-pill bg-secondary">$@Model.Revenue</span>
+                </li>
+                <li class="list-group-item">
+                    Budget <span class="badge rounded-pill bg-secondary">$@Model.Budget</span>
+                </li>
+            </ul>
+
+            <ul class="list-group mb-4">
+                <li class="list-group-item">
+                    <h6>Trailers</h6>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9" style="align-items: center; justify-items: center">
+            <h3>Casts</h3>
+            <partial name="_CastList" model="ViewBag.castsList"/>
+        </div>
+    </div>
+</div>
+
+<partial name="_ReviewModal"/>
+<partial name="_PurchaseModal"/>

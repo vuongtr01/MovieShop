@@ -1,0 +1,9 @@
+@model MovieResponseModel
+
+<div class="col col-xs-12 col-md-3 col-lg-6">
+    <div class="card movie-card" style="background-image: url(@Model.PosterUrl);" onclick=onClickMovieCard(@Model.Id)>
+        <div class="movie-card-overlay">
+            <h5 class="card-title">@Model.Title</h5>
+        </div>
+    </div>
+</div>

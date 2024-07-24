@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Cast detail page";
+}
+@model CastResponseModel
+
+<div class="container p-2">
+    <div class="row g-4" style="background-color: #616160; color: white">
+        <h3 style="text-align: center">@Model.Name</h3>
+        <h6 style="text-align: center">Gender: <span class="badge bg-success">@Model.Gender</span></h6>
+        <p style="text-align: center"><a class="link-primary link-offset-2 link-underline link-underline-opacity-0" href=@Model.ProfilePath)>Profile</a></p>
+        <p style="text-align: center"><a class="link-primary link-offset-2 link-underline link-underline-opacity-0" href=@Model.TmdbUrl)>Tmdb</a></p>
+    </div>
+</div>
+
+<h4 style="margin-top: 10px">
+    Movies
+</h4>
+<div class="container mt-5">
+    <div class="row g-4">
+        @foreach (var card in Model.movies)
+        {
+            <partial name="_MovieCard" model="card"/>
+        }
+    </div>
+</div>

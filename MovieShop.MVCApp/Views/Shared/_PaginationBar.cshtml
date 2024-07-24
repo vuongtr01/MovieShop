@@ -1,0 +1,63 @@
+@{
+    var nextIndexPage = ViewBag.currentIndex + 1;
+    var previousIndexPage = ViewBag.currentIndex - 1;
+    int rangeOffset = ViewBag.currentIndex / 10;
+}
+<div class="container">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <!-- Previous button -->
+            @if (ViewBag.hasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action=@ViewBag.Action asp-controller="Movies" asp-route-pageIndex="@previousIndexPage" tabindex="-1">
+                        Previous
+                    </a>
+                </li>   
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+            }
+                
+            <!-- Pagination numbers -->
+            @for (int i = 1; i <= 10; i++)
+            {
+                int pageIndex = 10 * @rangeOffset + i;
+                if (pageIndex == ViewBag.currentIndex)
+                {
+                    <li class="page-item active">
+                        <a class="page-link" asp-action=@ViewBag.Action asp-controller="Movies" asp-route-pageIndex="@pageIndex">
+                            @pageIndex
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-action=@ViewBag.Action asp-controller="Movies" asp-route-pageIndex="@pageIndex">
+                            @pageIndex
+                        </a>
+                    </li>
+                }
+            }
+            <!-- Next button -->
+            @if (ViewBag.hasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-action=@ViewBag.Action asp-controller="Movies" asp-route-pageIndex="@nextIndexPage">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link">
+                        Next
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
