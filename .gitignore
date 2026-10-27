@@ -1,0 +1,18 @@
+# .NET build outputs (at any project depth)
+[Bb]in/
+[Oo]bj/
+
+# Local Visual Studio and Rider state
+.vs/
+.idea/
+*.user
+*.suo
+
+# Test and coverage outputs
+TestResults/
+*.coverage
+*.coveragexml
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
